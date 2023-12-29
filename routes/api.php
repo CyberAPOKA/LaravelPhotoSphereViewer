@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\MarkerController;
+use App\Http\Controllers\PhotoController;
+use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +20,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('upload-image', [PhotoController::class, 'store']);
+Route::get('storage/{filename}', [PhotoController::class, 'show']);
+Route::get('photos', [PhotoController::class, 'photos']);
+Route::post('add-marker/{id}', [MarkerController::class, 'store']);
+Route::post('update-photo-info/{id}', [PhotoController::class, 'updatePhotoInfo']);
