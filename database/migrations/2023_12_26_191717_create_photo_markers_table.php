@@ -16,7 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('photo_id')->nullable();
 
             $table->string('code')->nullable(); // Código do marcador
-            $table->string('image_path')->nullable(); // Ícone que será exibido
+            $table->string('icon_path')->nullable(); // Ícone que será exibido
             $table->string('tooltip', 50)->nullable(); // Título (hover no ícone)
             $table->text('content')->nullable(); // Descrição detalhada (pop up que abre na direita ao clicar no ícone)
             $table->float('yaw', 8, 6)->nullable(); // Orientação horizontal, com precisão decimal

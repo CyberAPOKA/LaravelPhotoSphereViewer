@@ -16,7 +16,7 @@ class MarkerController extends Controller
     {
         $marker = PhotoMarker::create([
             'photo_id' => $id,
-            // 'image_path' => 'teste',
+            'icon_path' => $request->input('icon_path'),
             'code' => $request->input('code'),
             'tooltip' => $request->input('tooltip'),
             'content' => $request->input('content'),
