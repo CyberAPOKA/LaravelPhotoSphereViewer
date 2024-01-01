@@ -26,3 +26,4 @@ Route::get('storage/{filename}', [PhotoController::class, 'show']);
 Route::get('photos', [PhotoController::class, 'photos']);
 Route::post('add-marker/{id}', [MarkerController::class, 'store']);
 Route::post('update-photo-info/{id}', [PhotoController::class, 'updatePhotoInfo']);
+Route::post('update-marker-data/{id}', [MarkerController::class, 'update']);
