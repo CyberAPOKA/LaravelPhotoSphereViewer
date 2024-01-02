@@ -12,6 +12,8 @@ class PhotoMarker extends Model
     protected $fillable = [
         'photo_id',
         'code',
+        'type',
+        'html',
         'icon_path',
         'tooltip',
         'content',
