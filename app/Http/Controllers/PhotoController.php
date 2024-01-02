@@ -59,8 +59,8 @@ class PhotoController extends Controller
 
     public function updatePhotoInfo(Request $request, $id)
     {
-        // Log::info('Request Data:', $request->all());
-        // Log::info('Photo ID:', ['id' => $id]);
+        Log::info('Request Data:', $request->all());
+        Log::info('Photo ID:', ['id' => $id]);
 
         $photo = Photo::findOrFail($id);
 

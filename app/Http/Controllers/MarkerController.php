@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Redis;
 
 class MarkerController extends Controller
 {
@@ -46,6 +47,22 @@ class MarkerController extends Controller
             'code' => $request->input('code'),
             'yaw' => $request->input('yaw'),
             'pitch' => $request->input('pitch'),
+        ]);
+
+        return response()->json($marker);
+    }
+
+    public function updateMarkerInfo(Request $request, $id)
+    {
+        Log::info('Request Data:', $request->all());
+        Log::info('Marker ID:', ['id' => $id]);
+
+        $marker = PhotoMarker::find($id);
+
+        $marker->update([
+            'html' => $request->input('html'),
+            'tooltip' => $request->input('tooltip'),
+            'content' => $request->input('content'),
         ]);
 
         return response()->json($marker);
