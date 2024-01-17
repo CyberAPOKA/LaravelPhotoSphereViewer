@@ -13,6 +13,8 @@ class PhotoController extends Controller
 {
     public function store(Request $request)
     {
+        Log::info('Request Data:', $request->all());
+
         if ($request->hasFile('photo')) {
             $file = $request->file('photo');
             $filePath = $file->store('public/photos');
@@ -23,8 +25,6 @@ class PhotoController extends Controller
                 'photo_name' => $file->getClientOriginalName(),
                 'photo_path' => $filePath
             ]);
-
-            // $url = asset($filePath);
 
             return response()->json(['url' => $filePath, 'id' => $photo->id])
                 ->header('Access-Control-Allow-Origin', '*');
@@ -70,5 +70,12 @@ class PhotoController extends Controller
         ]);
 
         return response('success', 200);
+    }
+
+    public function photo($id)
+    {
+        $photo = Photo::findOrFail($id);
+
+        return response()->json($photo);
     }
 }
